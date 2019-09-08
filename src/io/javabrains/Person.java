@@ -37,7 +37,7 @@ public class Person {
     }
 
     @Override
-    public String toString(){
-        return "Person [firstName = "+firstName+", lastName = "+lastName+", age = "+age+"]";
+    public String toString() {
+        return "Person [firstName = " + firstName + ", lastName = " + lastName + ", age = " + age + "]";
     }
 }

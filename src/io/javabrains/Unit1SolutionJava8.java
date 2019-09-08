@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Unit1SolutionJava7 {
+public class Unit1SolutionJava8 {
 
     public static void main(String[] args) {
 
@@ -16,32 +16,14 @@ public class Unit1SolutionJava7 {
                 new Person("Charlotte", "Bronte", 45),
                 new Person("Matthew", "Arnold", 39)
         );
-
         //Step 1: sort list by lastName
-        Collections.sort(people, new Comparator<Person>() {
-            @Override
-            public int compare(Person o1, Person o2) {
-                return o1.getLastName().compareTo(o2.getLastName());
-            }
-        });
+        Collections.sort(people, Comparator.comparing(Person::getLastName));
 
         //Step 2: create a method that prints all elements in the list
-        print(people, new Condition() {
-            @Override
-            public boolean test(Person person) {
-                return true;
-            }
-        });
+        print(people, person -> true);
 
         //Step 3: create a method that prints all people whose last name start with C
-        print(people, new Condition() {
-            @Override
-            public boolean test(Person person) {
-                if (person.getLastName().startsWith("C"))
-                    return true;
-                return false;
-            }
-        });
+        print(people, person -> person.getLastName().startsWith("C"));
     }
 
     public static void print(List<Person> people, Condition condition) {
@@ -51,8 +33,3 @@ public class Unit1SolutionJava7 {
         }
     }
 }
-
-interface Condition {
-    boolean test(Person person);
-}
-
